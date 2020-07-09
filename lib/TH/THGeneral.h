@@ -19,6 +19,8 @@
 /* #undef BLAS_F2C */
 /* #undef BLAS_USE_CBLAS_DOT */
 
+#define HAVE_MMAP 1
+
 #ifdef __cplusplus
 #define TH_EXTERNC extern "C"
 #else

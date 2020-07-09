@@ -1,7 +1,13 @@
 #ifndef TH_TENSOR_INC
 #define TH_TENSOR_INC
 
+// #include "params.h"
+// #if TORCH_INCLUDES
 #include "THStorage.h"
+// #else
+// #include "THGeneral.h"
+// #endif
+
 #include "THTensorApply.h"
 
 #define THTensor TH_CONCAT_3(TH, Real, Tensor)

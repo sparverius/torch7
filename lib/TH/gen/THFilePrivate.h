@@ -1,5 +1,6 @@
-// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-08
+// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-09
 // DO NOT MODIFY
+#include "THGeneral.h"
 
 
 typedef struct __attribute__((aligned(2))) {

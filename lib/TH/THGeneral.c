@@ -1,8 +1,11 @@
 #include "THGeneral.h"
 #include "THAtomic.h"
 
+#include "params.h"
+#if TORCH_SHARED
 #ifdef _OPENMP
 #include <omp.h>
+#endif
 #endif
 
 #ifndef TH_HAVE_THREAD
@@ -11,6 +14,7 @@
 #define __thread __declspec(thread)
 #endif
 
+#if TORCH_SHARED
 #if (defined(__unix) || defined(_WIN32))
 #if defined(__FreeBSD__)
 #include <malloc_np.h>
@@ -19,6 +23,7 @@
 #endif
 #elif defined(__APPLE__)
 #include <malloc/malloc.h>
+#endif
 #endif
 
 /* Torch Error Handling */

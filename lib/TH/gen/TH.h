@@ -1,5 +1,6 @@
-// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-08
+// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-09
 // DO NOT MODIFY
+#include "THGeneral.h"
 
 
 void THFloatBlas_swap(long n, float* x, long incx, float* y, long incy);
@@ -304,15 +305,6 @@ double THRandom_logNormal(THGenerator* _generator, double mean, double stdv);
 int THRandom_geometric(THGenerator* _generator, double p);
 
 int THRandom_bernoulli(THGenerator* _generator, double p);
-
-typedef long int ptrdiff_t;
-typedef long unsigned int size_t;
-typedef int wchar_t;
-typedef struct {
-  long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
-  long double __max_align_ld
-      __attribute__((__aligned__(__alignof__(long double))));
-} max_align_t;
 
 int THSize_isSameSizeAs(const long* sizeA, long dimsA, const long* sizeB,
                         long dimsB);
@@ -4626,3 +4618,47 @@ THFile* THMemoryFile_new(const char* mode);
 
 THCharStorage* THMemoryFile_storage(THFile* self);
 void THMemoryFile_longSize(THFile* self, int size);
+#ifndef TH_TENSOR_MACROS_INC
+#define TH_TENSOR_MACROS_INC
+
+/* fast method to access to tensor data */
+
+#define THTensor_fastGet1d(self, x0) \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0]])
+
+#define THTensor_fastGet2d(self, x0, x1)                                      \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0] + \
+                                                   (x1) * (self)->stride[1]])
+
+#define THTensor_fastGet3d(self, x0, x1, x2)                                  \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0] + \
+                                                   (x1) * (self)->stride[1] + \
+                                                   (x2) * (self)->stride[2]])
+
+#define THTensor_fastGet4d(self, x0, x1, x2, x3)                               \
+  (((self)->storage->data +                                                    \
+    (self)                                                                     \
+        ->storageOffset)[(x0) * (self)->stride[0] + (x1) * (self)->stride[1] + \
+                         (x2) * (self)->stride[2] + (x3) * (self)->stride[3]])
+
+#define THTensor_fastSet1d(self, x0, value)                                    \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0]] = \
+       value)
+
+#define THTensor_fastSet2d(self, x0, x1, value)                                \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0] +  \
+                                                   (x1) * (self)->stride[1]] = \
+       value)
+
+#define THTensor_fastSet3d(self, x0, x1, x2, value)                            \
+  (((self)->storage->data + (self)->storageOffset)[(x0) * (self)->stride[0] +  \
+                                                   (x1) * (self)->stride[1] +  \
+                                                   (x2) * (self)->stride[2]] = \
+       value)
+
+#define THTensor_fastSet4d(self, x0, x1, x2, x3, value)       \
+  (((self)->storage->data + (self)->storageOffset)            \
+       [(x0) * (self)->stride[0] + (x1) * (self)->stride[1] + \
+        (x2) * (self)->stride[2] + (x3) * (self)->stride[3]] = value)
+
+#endif

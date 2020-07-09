@@ -1,6 +1,10 @@
 #include "THAllocator.h"
 #include "THAtomic.h"
 
+#include "params.h"
+
+#if TORCH_INCLUDES
+
 /* stuff for mapped files */
 #ifdef _WIN32
 #include <windows.h>
@@ -14,6 +18,8 @@
 #include <unistd.h>
 #endif
 /* end of stuff for mapped files */
+
+#endif
 
 static void* THDefaultAllocator_alloc(void* ctx, ptrdiff_t size) {
   return THAlloc(size);

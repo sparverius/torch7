@@ -1,9 +1,14 @@
 #include "THGeneral.h"
 #include "THRandom.h"
 
+#include "params.h"
+#if TORCH_SHARED
+
 #ifndef _WIN32
 #include <fcntl.h>
 #include <unistd.h>
+#endif
+
 #endif
 
 /* Code for the Mersenne Twister random generator.... */

@@ -1,5 +1,6 @@
-// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-08
+// THIS FILE WAS AUTOMATICALLY GENERATED @ 2020-07-09
 // DO NOT MODIFY
+#include "THGeneral.h"
 
 
 void THAtomicSet(int volatile* a, int newvalue);

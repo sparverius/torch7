@@ -1,6 +1,10 @@
 #include "THMemoryFile.h"
 #include "THFilePrivate.h"
+
+#include "params.h"
+#if TORCH_SHARED
 #include "stdint.h"
+#endif
 
 typedef struct THMemoryFile__ {
   THFile file;
